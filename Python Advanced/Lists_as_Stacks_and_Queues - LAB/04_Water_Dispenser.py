@@ -16,3 +16,31 @@ o Otherwise, print "{person_name} must wait" and remove the person from the queu
 
 In the end, print how many liters of water have left in the format: "{left_liters} liters left"."""
 
+
+
+from collections import deque
+queue = deque([])
+
+liters_in_dispenser = int(input())
+command = input()
+
+while not command == 'Start':
+    queue.append(command)
+    command = input()
+
+command_line = input()
+while not command_line == 'End':
+    if command_line.isdigit():
+        current_name = queue.popleft()
+        if int(command_line) <= liters_in_dispenser:
+            liters_in_dispenser -= int(command_line)
+            print(f"{current_name} got water")
+        else:
+            print(f"{current_name} must wait")
+    elif 'refill' in command_line:
+        refill = command_line.split()
+        refill_liters = int(refill[1])
+        liters_in_dispenser += refill_liters
+    command_line = input()
+print(f"{liters_in_dispenser} liters left")
+
