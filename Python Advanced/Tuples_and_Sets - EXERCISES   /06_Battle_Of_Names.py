@@ -20,7 +20,7 @@ for row in range(1,count_of_names+1):
         current_ascii_sum += ord(ch)
     current_ascii_sum = int(current_ascii_sum / row)
     if current_ascii_sum % 2 == 0:
-        even_set.add(current_ascii_sum)
+         even_set.add(current_ascii_sum)
     else:
         odd_set.add(current_ascii_sum)
 if sum(even_set) == sum(odd_set):

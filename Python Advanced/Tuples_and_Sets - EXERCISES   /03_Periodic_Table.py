@@ -7,6 +7,5 @@ sets_of_elements = set()
 for _ in range(count_of_inputs):
     current_set = {element for element in input().split()}
     sets_of_elements = current_set.union(sets_of_elements)
-for element in sets_of_elements:
-    print(element)
+print(*sets_of_elements,end='\n')
 

@@ -13,8 +13,8 @@ for _ in range(count_of_lines):
     first_set_info, second_set_info = input().split("-")
     first_start, first_end = (int(x) for x in first_set_info.split(','))
     second_start, second_end = (int(y) for y in second_set_info.split(','))
-    first_set = {num for num in range(first_start,first_end+1)}
-    second_set = {num for num in range(second_start, second_end+1)}
+    first_set = set(range(first_start,first_end+1))
+    second_set = set(range(second_start, second_end+1))
     current_intersection = first_set.intersection(second_set)
     if len(current_intersection) > len(intersection_set):
         intersection_set = current_intersection
