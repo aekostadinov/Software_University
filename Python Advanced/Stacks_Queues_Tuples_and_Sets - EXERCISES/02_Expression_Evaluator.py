@@ -14,7 +14,7 @@ Input
 Output
     -Single number: the result after the evaluation"""
 
-
+### Variant 1 ###
 from collections import deque
 from math import floor
 sequence_elements = deque([int(num) if num[-1].isdigit() else num for num in input().split()])
@@ -31,3 +31,29 @@ while sequence_elements:
             current_num = current_list_of_numbers.popleft()
             result = floor(eval(f"{result} {operator} {current_num}"))
 print(result)
+
+### Variant 2 ###
+
+from collections import deque
+evaluation = deque([int(digit) if digit[-1].isdigit() else digit for digit in input().split()])
+extracted_info = deque()
+while evaluation:
+    extracted_item = evaluation.popleft()
+    if extracted_item in ['*', '/', '+', '-']:
+        result = extracted_info.popleft()
+        if extracted_item == '*':
+            while extracted_info:
+                result *= extracted_info.popleft()
+        elif extracted_item == '+':
+            while extracted_info:
+                result += extracted_info.popleft()
+        elif extracted_item == '-':
+            while extracted_info:
+                result -= extracted_info.popleft()
+        elif extracted_item == '/':
+            while extracted_info:
+                result //= extracted_info.popleft()
+        extracted_info = deque([result])
+    else:
+        extracted_info.append(extracted_item)
+print(*extracted_info)
