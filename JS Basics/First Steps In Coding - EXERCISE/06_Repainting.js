@@ -30,7 +30,7 @@ function neededMoney(input){
 
 }
 
-neededMoney(["10 ",
-"11 ",
-"4 ",
-"8 "]);
+// neededMoney(["10 ",
+// "11 ",
+// "4 ",
+// "8 "]);
