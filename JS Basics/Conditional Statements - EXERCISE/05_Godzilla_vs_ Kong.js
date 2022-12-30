@@ -42,7 +42,7 @@ function movieMoney(input) {
     }
     }
 
-movieMoney(["20000",
-"120",
-"55.5"])
+// movieMoney(["20000",
+// "120",
+// "55.5"])
 
