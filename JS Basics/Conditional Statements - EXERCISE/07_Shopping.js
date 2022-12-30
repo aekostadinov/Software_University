@@ -28,8 +28,8 @@ function neededMoney(input) {
 
 }
 
-neededMoney((["900",
-"2",
-"1",
-"3"]))
+// neededMoney((["900",
+// "2",
+// "1",
+// "3"]))
 
