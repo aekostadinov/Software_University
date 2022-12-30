@@ -23,3 +23,7 @@ function priceOrder(input){
     let totalSum = sumWithoutDesert + sumDesert + 2.50
     console.log(totalSum);
 }
+
+// priceOrder(["2 ",
+// "4 ",
+// "3 "]);
