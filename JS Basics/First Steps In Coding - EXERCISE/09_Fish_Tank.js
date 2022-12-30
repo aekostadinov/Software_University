@@ -26,7 +26,7 @@ function countLiters(input){
     console.log(result);
 }
 
-countLiters(["85 ", 
-"75 ",
-"47 ",
-"17 "]);
+// countLiters(["85 ", 
+// "75 ",
+// "47 ",
+// "17 "]);
