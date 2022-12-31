@@ -12,5 +12,5 @@ function checkOffice(input){
     }
 }
 
-checkOffice(["11",
-"Monday"])
+// checkOffice(["11",
+// "Monday"])
