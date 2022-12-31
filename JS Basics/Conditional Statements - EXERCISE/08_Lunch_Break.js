@@ -19,6 +19,6 @@ function time(input) {
         console.log(`You don't have enough time to watch ${nameMovie}, you need ${timeNeed} more minutes.`)
     }
 }
-time(["Teen Wolf",
-"48",
-"60"])
+// time(["Teen Wolf",
+// "48",
+// "60"])
