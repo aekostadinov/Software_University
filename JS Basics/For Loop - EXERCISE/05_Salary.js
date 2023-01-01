@@ -30,8 +30,10 @@ function checkSalary(input) {
         console.log(`${salary}`)
     }
 }
-checkSalary(["3",
-"500",
-"Github.com",
-"Stackoverflow.com",
-"softuni.bg"])
+
+
+// checkSalary(["3",
+// "500",
+// "Github.com",
+// "Stackoverflow.com",
+// "softuni.bg"])
