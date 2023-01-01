@@ -6,7 +6,11 @@
 function histogram(input) {
     let numberDigits = Number(input[0])
     let numbersSequence = input
-    let p1,p2,p3,p4,p5 = 0;0;0;0;0
+    let p1 = 0
+    let p2 = 0
+    let p3 = 0
+    let p4 = 0
+    let p5 = 0
 
     for (let i = 1; i < numbersSequence.length; i++){
         let num = Number(input[i])
