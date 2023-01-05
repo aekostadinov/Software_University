@@ -27,4 +27,4 @@ function building(input) {
     } console.log(result)
 }
 
-building(["6", "4"])
+// building(["6", "4"])
