@@ -13,19 +13,19 @@
 // The output should be printed to the console
 
 function age(number) {
-    if (0 <= age && age <=2) {
+    if (0 <= number && number <=2) {
         console.log("baby")
-    } else if (3 <= age && age <=13) {
+    } else if (3 <= number && number <=13) {
         console.log("child")
-    } else if (14 <= age && age <=19) {
+    } else if (14 <= number && number <=19) {
         console.log("teenager")
-    } else if (20 <= age && age <=65) {
+    } else if (20 <= number && number <=65) {
         console.log("adult")
-    } else if (age >=66) {
+    } else if (number >=66) {
         console.log("elder")
     } else {
         console.log("out of bounds")
     }
 }
 
-age(20)
+// age(20)
