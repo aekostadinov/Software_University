@@ -8,3 +8,6 @@ while len(list_of_nums) > 0:
     stack.append(list_of_nums.pop())
 print(" ".join(str(n) for n in stack))
 
+### Variant 2 ###
+
+# print(*input().split()[::-1], sep=" ")
