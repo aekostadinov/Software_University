@@ -62,3 +62,29 @@ first_seq_result = sorted(num for num in first_sequence)
 second_seq_result = sorted(num for num in second_sequence)
 print(', '.join(str(num) for num in first_seq_result))
 print(', '.join(str(num) for num in second_seq_result))
+
+
+### Variant 2###
+
+# first = set(int(x) for x in input().split())
+# second = set(int(x) for x in input().split())
+#
+# function = {
+#     "Add First": lambda x: [first.add(number) for number in x],
+#     "Add Second": lambda x: [second.add(number) for number in x],
+#     "Remove First": lambda x: [first.discard(number) for number in x],
+#     "Remove Second": lambda x: [second.discard(number) for number in x],
+# }
+#
+# for _ in range(int(input())):
+#     first_command, *data = input().split()
+#     command = first_command + " " + data.pop(0)
+#
+#     if data:
+#         function[command](int(x) for x in data)
+#     else:
+#         function[command]()
+#
+# print(*sorted(first),sep=", ")
+# print(*sorted(second),sep=", ")
+
