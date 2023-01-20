@@ -6,3 +6,8 @@ count_of_names = int(input())
 set_of_names = {input() for _ in range(count_of_names)}
 for name in set_of_names:
     print(name)
+
+
+### Variant 2 ###
+
+# print(*{input() for _ in range(int(input()))}, sep="\n")
