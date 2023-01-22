@@ -13,25 +13,54 @@ makes the coordinates not valid.
 Your program should finish when the command "END" is entered."""
 
 ### Variant 1 ###
-row, column = (int(ent) for ent in input().split())
-matrix = [[element for element in input().split()] for _ in range(row)]
+# row, column = (int(ent) for ent in input().split())
+# matrix = [[element for element in input().split()] for _ in range(row)]
+#
+# command = input()
+# while not command == 'END':
+#     is_valid = True
+#     command_line, *coordinates = command.split()
+#     if not command_line == 'swap' or not len(coordinates) == 4:
+#         is_valid = False
+#     if is_valid:
+#         r_1, c_1, r_2, c_2 = (int(index) for index in coordinates)
+#         if not (r_1 in range(row) and r_2 in range(row) and c_1 in range(column) and c_2 in range(column)):
+#             is_valid = False
+#         if is_valid:
+#             matrix[r_1][c_1], matrix[r_2][c_2] = matrix[r_2][c_2], matrix[r_1][c_1]
+#             for r in range(row):
+#                 print(' '.join(str(element) for element in matrix[r]))
+#     if not is_valid:
+#         print("Invalid input!")
+#     command = input()
 
-command = input()
-while not command == 'END':
-    is_valid = True
-    command_line, *coordinates = command.split()
-    if not command_line == 'swap' or not len(coordinates) == 4:
-        is_valid = False
-    if is_valid:
-        r_1, c_1, r_2, c_2 = (int(index) for index in coordinates)
-        if not (r_1 in range(row) and r_2 in range(row) and c_1 in range(column) and c_2 in range(column)):
-            is_valid = False
-        if is_valid:
-            matrix[r_1][c_1], matrix[r_2][c_2] = matrix[r_2][c_2], matrix[r_1][c_1]
-            for r in range(row):
-                print(' '.join(str(element) for element in matrix[r]))
-    if not is_valid:
+
+### Variant 2###
+
+def valid_indexes(indexes):
+    if set(indexes[:2]).issubset(valid_rows) and set(indexes[2:]).issubset(valid_columns):
+        return True
+    return False
+
+def swap_command(command,indexes):
+    if command == 'swap' and len(indexes) == 4 and valid_indexes(indexes):
+        row1, col1, row2, col2 = indexes
+        matrix[row1][col1],matrix[row2][col2] = matrix[row2][col2],matrix[row1][col1]
+        print(*[' '.join(matrix[r]) for r in range(rows)], sep="\n")
+    else:
         print("Invalid input!")
-    command = input()
 
-### Variant 2 ###
+
+
+rows, columns = [int(x) for x in input().split()]
+matrix = [input().split() for _ in range(rows)]
+print(matrix)
+
+valid_rows = range(rows)
+valid_columns = range(columns)
+
+while True:
+    command, *info = [int(x) if x.isdigit() else x for x in input().split()]
+    if command == 'END':
+        break
+    swap_command(command,info)
