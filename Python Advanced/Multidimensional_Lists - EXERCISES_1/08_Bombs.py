@@ -18,29 +18,63 @@ Output
 "Sum: {sum_of_cells}"
     *In the end, print the matrix. A space must separate the cells."""
 
-size = int(input())
-matrix = [[int(num) for num in input().split()] for _ in range(size)]
-index_information = input().split()
-alive_cells = 0
-for element in index_information:
-    r_index, c_index = (int(index) for index in element.split(","))
-    if matrix[r_index][c_index] > 0:
-        explode_value = matrix[r_index][c_index]
-        for r in range(r_index - 1, r_index + 2):
-            for c in range(c_index - 1, c_index + 2):
-                if r in range(size) and c in range(size):
-                    if matrix[r][c] > 0:
-                        matrix[r][c] -= explode_value
-sum_of_alive_cells = 0
-for r in range(size):
-    for c in range(size):
-        if matrix[r][c] > 0:
-            alive_cells += 1
-            sum_of_alive_cells += matrix[r][c]
-print(f"Alive cells: {alive_cells}")
-print(f"Sum: {sum_of_alive_cells}")
-for row in range(size):
-    print(' '.join(str(number) for number in matrix[row]))
+# size = int(input())
+# matrix = [[int(num) for num in input().split()] for _ in range(size)]
+# index_information = input().split()
+# alive_cells = 0
+# for element in index_information:
+#     r_index, c_index = (int(index) for index in element.split(","))
+#     if matrix[r_index][c_index] > 0:
+#         explode_value = matrix[r_index][c_index]
+#         for r in range(r_index - 1, r_index + 2):
+#             for c in range(c_index - 1, c_index + 2):
+#                 if r in range(size) and c in range(size):
+#                     if matrix[r][c] > 0:
+#                         matrix[r][c] -= explode_value
+# sum_of_alive_cells = 0
+# for r in range(size):
+#     for c in range(size):
+#         if matrix[r][c] > 0:
+#             alive_cells += 1
+#             sum_of_alive_cells += matrix[r][c]
+# print(f"Alive cells: {alive_cells}")
+# print(f"Sum: {sum_of_alive_cells}")
+# for row in range(size):
+#     print(' '.join(str(number) for number in matrix[row]))
 
 
+### Variant 2 ###
+
+n = int(input())
+
+matrix = [[int(num) for num in input().split()] for _ in range(n)]
+coordinates = ((int(x) for x in coordinate.split(", ")) for coordinate in input().split())
+
+directions = (
+    (-1,0),  #up
+    (1,0),   #down
+    (0,1),   #right
+    (0,-1),  #left
+    (-1,-1), #top-left
+    (-1,1),  #top-right
+    (1,-1),  #bottom-left
+    (1,1),   #bottom-right
+    (0,0),   #current
+)
+
+
+for row,column in coordinates:
+    if matrix[row][column] <= 0:
+        continue
+
+    for x,y in directions:
+        r, c = row + x, column + y
+
+        if 0 <= r < n and 0 <= c < n:
+            matri[r][c] -= matrix[row][column] if matrix[r][c] > 0 else 0
+
+alive_cells = [num for row in range(n) for num in matrix[row] if num > 0]
+print(f"Alive cells: {len(alive_cells)}")
+print(f"Sum: {sum(alive_cells)}")
+[print(*matrix[r], end=" ") for r in range(n)]
 
