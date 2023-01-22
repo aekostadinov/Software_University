@@ -14,3 +14,14 @@ for s in range(size):
     secondary.append(s_num)
 abs_difference = abs(sum(primary) - sum(secondary))
 print(abs_difference)
+
+### Variant 2 ###
+
+# n = int(input())
+# matrix = [[int(x) for x in input().split()] for _ in range(n)]
+# primary, secondary = 0, 0
+#
+# for s in range(n):
+#     primary += matrix[s][s]
+#     secondary += matrix[s][n-s-1]
+# print(abs(primary-secondary))
