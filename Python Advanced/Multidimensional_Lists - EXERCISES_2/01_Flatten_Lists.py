@@ -15,7 +15,24 @@ from left to right as shown below"""
 # print(' '.join(result))
 
 ### Variant 2 ###
-matrix = input().split("|")[::-1]
-for row in range(len(matrix)):
-    for element in matrix[row].split():
-        print(element,end=' ')
+# matrix = input().split("|")[::-1]
+# for row in range(len(matrix)):
+#     for element in matrix[row].split():
+#         print(element,end=' ')
+
+### Variant 3 ###
+
+# line = input().split("|")
+# sub_list = []
+#
+# for sub_string in line[::-1]:
+#     sub_list.extend(sub_string.split())
+# print(*sub_list)
+
+### Variant 4 ###
+
+# line = [numbers.split() for numbers in input().split("|")]
+# print(*[' '.join(element) for element in line[::-1]])
+
+
+
