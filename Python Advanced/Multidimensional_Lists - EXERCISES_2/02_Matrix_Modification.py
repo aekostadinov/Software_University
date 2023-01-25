@@ -6,24 +6,43 @@ You will be receiving commands in the following format:
 If the coordinate is invalid, you should print "Invalid coordinates". A coordinate is valid if both of the given
 indexes are in range [0; len() – 1].When you receive "END", you should print the matrix and stop the program."""
 
-def check_indexes(r,c):
-    if r in range(size) and c in range(size):
-        return True
+# def check_indexes(r,c):
+#     if r in range(size) and c in range(size):
+#         return True
+#
+# size = int(input())
+# matrix = [[int(num) for num in input().split()] for _ in range(size)]
+# command_line = input()
+# while not command_line == 'END':
+#     command, *value_indexes = command_line.split()
+#     r, c, value = map(int, value_indexes)
+#     if check_indexes(r,c):
+#         if command == 'Add':
+#             matrix[r][c] += value
+#         elif command == 'Subtract':
+#             matrix[r][c] -= value
+#     else:
+#         print("Invalid coordinates")
+#     command_line = input()
+# for r in range(size):
+#     print(' '.join(str(num) for num in matrix[r]))
+
+
+### Variant 2 ###
 
 size = int(input())
 matrix = [[int(num) for num in input().split()] for _ in range(size)]
-command_line = input()
-while not command_line == 'END':
-    command, *value_indexes = command_line.split()
-    r, c, value = map(int, value_indexes)
-    if check_indexes(r,c):
-        if command == 'Add':
-            matrix[r][c] += value
-        elif command == 'Subtract':
-            matrix[r][c] -= value
-    else:
+
+command = input().split()
+while not command[0] == 'END':
+    type_command, row_ind, col_ind, value = [int(num) if num[-1].isdigit() else num for num in command]
+    if not (row_ind in range(size) and col_ind in range(size)):
         print("Invalid coordinates")
-    command_line = input()
-for r in range(size):
-    print(' '.join(str(num) for num in matrix[r]))
+    elif type_command == 'Add':
+        matrix[row_ind][col_ind] += value
+    elif type_command == 'Subtract':
+        matrix[row_ind][col_ind] -= value
+    command = input().split()
+
+[print(*row) for row in matrix]
 
