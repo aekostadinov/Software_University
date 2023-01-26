@@ -13,58 +13,81 @@ Input
 Output
     -Print a single integer with the number of knights that need to be removed."""
 
+# def attack_knights(row, column):
+#     count_of_knights = 0
+#     if (row - 2) in range(size) and (column - 1) in range(size):
+#         if matrix[row - 2][column - 1] == 'K':
+#             count_of_knights += 1
+#     if (row - 2) in range(size) and (column + 1) in range(size):
+#         if matrix[row - 2][column + 1] == 'K':
+#             count_of_knights += 1
+#     if (row - 1) in range(size) and (column - 2) in range(size):
+#         if matrix[row - 1][column - 2] == 'K':
+#             count_of_knights += 1
+#     if (row - 1) in range(size) and (column + 2) in range(size):
+#         if matrix[row - 1][column + 2] == 'K':
+#             count_of_knights += 1
+#     if (row + 2) in range(size) and (column - 1) in range(size):
+#         if matrix[row + 2][column - 1] == 'K':
+#             count_of_knights += 1
+#     if (row + 2) in range(size) and (column + 1) in range(size):
+#         if matrix[row + 2][column + 1] == 'K':
+#             count_of_knights += 1
+#     if (row + 1) in range(size) and (column - 2) in range(size):
+#         if matrix[row + 1][column - 2] == 'K':
+#             count_of_knights += 1
+#     if (row + 1) in range(size) and (column + 2) in range(size):
+#         if matrix[row + 1][column + 2] == 'K':
+#             count_of_knights += 1
+#     return count_of_knights
+#
+#
+# def redifine_dict():
+#     knights_dictionary = {}
+#     for r in range(size):
+#         for c in range(size):
+#             if matrix[r][c] == 'K':
+#                 count_of_knights = attack_knights(r, c)
+#                 if count_of_knights > 0:
+#                     knights_dictionary[(r, c)] = count_of_knights
+#     knights_dictionary = dict(sorted(knights_dictionary.items(), key=lambda x: -x[1]))
+#     return knights_dictionary
+#
+#
+# size = int(input())
+# matrix = [[char for char in input()] for _ in range(size)]
+# counter = 0
+# knights_dictionary = redifine_dict()
+# while knights_dictionary:
+#     counter += 1
+#     for indexes, value in knights_dictionary.items():
+#         row, column = indexes
+#         knights_dictionary.pop(indexes)
+#         matrix[row][column] = '0'
+#         knights_dictionary = redifine_dict()
+#         break
+# print(counter)
 
-def attack_knights(row, column):
-    count_of_knights = 0
-    if (row - 2) in range(size) and (column - 1) in range(size):
-        if matrix[row - 2][column - 1] == 'K':
-            count_of_knights += 1
-    if (row - 2) in range(size) and (column + 1) in range(size):
-        if matrix[row - 2][column + 1] == 'K':
-            count_of_knights += 1
-    if (row - 1) in range(size) and (column - 2) in range(size):
-        if matrix[row - 1][column - 2] == 'K':
-            count_of_knights += 1
-    if (row - 1) in range(size) and (column + 2) in range(size):
-        if matrix[row - 1][column + 2] == 'K':
-            count_of_knights += 1
-    if (row + 2) in range(size) and (column - 1) in range(size):
-        if matrix[row + 2][column - 1] == 'K':
-            count_of_knights += 1
-    if (row + 2) in range(size) and (column + 1) in range(size):
-        if matrix[row + 2][column + 1] == 'K':
-            count_of_knights += 1
-    if (row + 1) in range(size) and (column - 2) in range(size):
-        if matrix[row + 1][column - 2] == 'K':
-            count_of_knights += 1
-    if (row + 1) in range(size) and (column + 2) in range(size):
-        if matrix[row + 1][column + 2] == 'K':
-            count_of_knights += 1
-    return count_of_knights
 
-
-def redifine_dict():
-    knights_dictionary = {}
-    for r in range(size):
-        for c in range(size):
-            if matrix[r][c] == 'K':
-                count_of_knights = attack_knights(r, c)
-                if count_of_knights > 0:
-                    knights_dictionary[(r, c)] = count_of_knights
-    knights_dictionary = dict(sorted(knights_dictionary.items(), key=lambda x: -x[1]))
-    return knights_dictionary
-
+### Variant 2 ###
 
 size = int(input())
-matrix = [[char for char in input()] for _ in range(size)]
-counter = 0
-knights_dictionary = redifine_dict()
-while knights_dictionary:
-    counter += 1
-    for indexes, value in knights_dictionary.items():
-        row, column = indexes
-        knights_dictionary.pop(indexes)
-        matrix[row][column] = '0'
-        knights_dictionary = redifine_dict()
-        break
-print(counter)
+matrix = [list(input()) for _ in range(size)]
+
+positions = (
+    (-2, -1),
+    (-2, 1),
+    (-1, -2),
+    (-1, 2),
+    (1, -2),
+    (1, 2),
+    (2, -1),
+    (2, 1),
+)
+
+removed_knights = 0
+
+while True:
+    max_attacks = 0
+    knights_with_most_attack_positions = []
+    
