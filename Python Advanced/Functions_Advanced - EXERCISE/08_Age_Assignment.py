@@ -6,17 +6,32 @@ line in the format: "{name} is {age} years old."
 Submit only the function in the judge system."""
 
 
-def age_assignment(*args, **kwargs):
-    output = {}
-    result = ''
-    for name in args:
-        first_letter = name[0]
-        if first_letter in kwargs:
-            output[name] = kwargs[first_letter]
-    sorted_output = dict(sorted(output.items(), key=lambda x: x[0]))
-    for name, age in sorted_output.items():
-        result += f"{name} is {age} years old." + "\n"
-    return result
-    
+# def age_assignment(*args, **kwargs):
+#     output = {}
+#     result = ''
+#     for name in args:
+#         first_letter = name[0]
+#         if first_letter in kwargs:
+#             output[name] = kwargs[first_letter]
+#     sorted_output = dict(sorted(output.items(), key=lambda x: x[0]))
+#     for name, age in sorted_output.items():
+#         result += f"{name} is {age} years old." + "\n"
+#     return result
+#
+#
+# print(age_assignment("Peter", "George", G=26, P=19))
+
+### Variant 2 ###
+
+def age_assignment(*names, **data):
+    result = []
+    for letter, age in data.items():
+        person_name = ''
+        for name in names:
+            if name.startswith(letter):
+                person_name = name
+                break
+        result.append(f"{person_name} is {age} years old.")
+    return "\n".join(result)
 
 print(age_assignment("Peter", "George", G=26, P=19))
