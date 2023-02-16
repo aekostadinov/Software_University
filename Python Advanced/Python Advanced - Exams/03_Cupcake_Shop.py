@@ -22,25 +22,43 @@ Output
     -The function should return a new inventory list
     -All commands will be valid"""
 
+### Variant 1 ###
+# def stock_availability(list_of_boxes, command, *args):
+#     if command == 'delivery':
+#         for cakes in args:
+#             list_of_boxes.append(cakes)
+#     elif command == 'sell':
+#         if args:
+#             for element in args:
+#                 if str(element).isdigit():
+#                     if len(list_of_boxes) > element:
+#                         list_of_boxes = list_of_boxes[element:]
+#                     else:
+#                         list_of_boxes = []
+#                 else:
+#                     while element in list_of_boxes:
+#                         list_of_boxes.remove(element)
+#         else:
+#             list_of_boxes.pop(0)
+#     return list_of_boxes
 
-def stock_availability(list_of_boxes, command, *args):
-    if command == 'delivery':
-        for cakes in args:
-            list_of_boxes.append(cakes)
-    elif command == 'sell':
-        if args:
-            for element in args:
-                if str(element).isdigit():
-                    if len(list_of_boxes) > element:
-                        list_of_boxes = list_of_boxes[element:]
-                    else:
-                        list_of_boxes = []
-                else:
-                    while element in list_of_boxes:
-                        list_of_boxes.remove(element)
-        else:
-            list_of_boxes.pop(0)
-    return list_of_boxes
+
+### Variant 2 ###
+def stock_availability(items, *args):
+    if args[0] == 'delivery' and args[1:]:
+        items_to_delivery = args[1:]
+        items = items + list(items_to_delivery)
+    elif args[0] == 'sell' and not args[1:]:
+        items.pop(0)
+    elif args[0] == 'sell' and str(args[1]).isdigit():
+        count_of_sold_cakes = args[1]
+        items = items[count_of_sold_cakes:]
+    elif args[0] == 'sell' and args[1:]:
+        for item in args[1:]:
+            while item in items:
+                items.remove(item)
+    return items
+
 
 
 
